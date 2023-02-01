@@ -21,7 +21,7 @@ public class TheInternet
 
     public async Task Open()
     {
-        await _page.GotoAsync("http://localhost:7080/");
+        await _page.GotoAsync("https://the-internet.herokuapp.com/");
         await _checkboxLink.WaitForAsync(new() { State = WaitForSelectorState.Visible });
     }
 

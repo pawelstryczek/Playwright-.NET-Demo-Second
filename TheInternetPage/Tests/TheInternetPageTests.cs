@@ -18,8 +18,8 @@ public class TheInternetPageTests : PageTest
         await checkboxesPage.SelectCheckboxOne();
         await checkboxesPage.UnSelectCheckboxTwo();
         
-        Assert.That(checkboxesPage.IsCheckBoxOneSelected(), Is.True);
-        Assert.That(checkboxesPage.IsCheckBoxTwoSelected(), Is.False);
+        Assert.That(await checkboxesPage.IsCheckBoxOneSelected(), Is.True);
+        Assert.That(await checkboxesPage.IsCheckBoxTwoSelected(), Is.False);
     }
 
     [Test]
