@@ -1,6 +1,5 @@
 #Playwright in .Net environment in classic way (async way)
 
 What you can find:
-
-    Page object model apprach
-    Connection with NUnit
+1)Page object model apprach
+2)Connection with NUnit
