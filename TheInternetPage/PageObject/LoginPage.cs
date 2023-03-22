@@ -16,17 +16,17 @@ public class LoginPage
         _loginButton = page.Locator("button[type='submit']");
     }
 
-    public async Task EnterUsername(string username)
+    public async Task EnterUsernameAsync(string username)
     {            
         await _userNameInput.FillAsync(username);
     }
 
-    public async Task EnterPassword(string password)
+    public async Task EnterPasswordAsync(string password)
     {
         await _passwordInput.FillAsync(password);
     }
 
-    public async Task<SecureAreaPage> ClickLogin()
+    public async Task<SecureAreaPage> ClickLoginAsync()
     {
         await _loginButton.ClickAsync();
         return new(_page);

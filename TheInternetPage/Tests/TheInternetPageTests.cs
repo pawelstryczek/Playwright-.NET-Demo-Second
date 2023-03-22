@@ -1,6 +1,7 @@
 using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
 using TheInternetPage.PageObject;
+using static NUnit.Framework.TestContext;
 
 namespace TheInternetPage.Tests;
 
@@ -13,25 +14,25 @@ public class TheInternetPageTests : PageTest
     public async Task CheckmarkTest()
     {
         var theInternet = TheInternet.Initialize(Page);
-        await theInternet.Open();
-        var checkboxesPage = await theInternet.ClickCheckboxes();
-        await checkboxesPage.SelectCheckboxOne();
-        await checkboxesPage.UnSelectCheckboxTwo();
+        await theInternet.OpenAsync();
+        var checkboxesPage = await theInternet.ClickCheckboxesAsync();
+        await checkboxesPage.SelectCheckboxOneAsync();
+        await checkboxesPage.UnSelectCheckboxTwoAsync();
         
-        Assert.That(await checkboxesPage.IsCheckBoxOneSelected(), Is.True);
-        Assert.That(await checkboxesPage.IsCheckBoxTwoSelected(), Is.False);
+        Assert.That(await checkboxesPage.IsCheckBoxOneSelectedAsync(), Is.True);
+        Assert.That(await checkboxesPage.IsCheckBoxTwoSelectedAsync(), Is.False);
     }
 
     [Test]
     public async Task LoginTest()
     {
         var theInternet = TheInternet.Initialize(Page);
-        await theInternet.Open();
-        var loginPage = await theInternet.ClickFormAuthentication();
-        await loginPage.EnterUsername("tomsmith");
-        await loginPage.EnterPassword("SuperSecretPassword!");
-        var secureAreaPage = await loginPage.ClickLogin();
+        await theInternet.OpenAsync();
+        var loginPage = await theInternet.ClickFormAuthenticationAsync();
+        await loginPage.EnterUsernameAsync(username: Parameters.Get("username"));
+        await loginPage.EnterPasswordAsync(password: Parameters.Get("password"));
+        var secureAreaPage = await loginPage.ClickLoginAsync();
 
-        StringAssert.Contains("You logged into a secure area!", await secureAreaPage.GetLoginStatus());
+        StringAssert.Contains("You logged into a secure area!", await secureAreaPage.GetLoginStatusAsync());
     }
 }

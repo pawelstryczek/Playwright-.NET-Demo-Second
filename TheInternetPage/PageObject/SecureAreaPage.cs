@@ -16,7 +16,7 @@ public class SecureAreaPage
         _header.WaitForAsync(new() { State = WaitForSelectorState.Visible }).Wait();
     }
 
-    public async Task<string> GetLoginStatus()
+    public async Task<string> GetLoginStatusAsync()
     {
         return await _status.InnerTextAsync();
     }

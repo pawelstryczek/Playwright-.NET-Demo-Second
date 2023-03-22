@@ -15,20 +15,20 @@ public class CheckboxesPage
         _checkboxes = page.Locator("input");
     }
 
-    public async Task SelectCheckboxOne()
+    public async Task SelectCheckboxOneAsync()
     {
         await _checkboxes.Nth(0).CheckAsync();
     }
-    public async Task UnSelectCheckboxTwo()
+    public async Task UnSelectCheckboxTwoAsync()
     {
         await _checkboxes.Nth(1).UncheckAsync();
     }
 
-    public async Task<bool> IsCheckBoxOneSelected()
+    public async Task<bool> IsCheckBoxOneSelectedAsync()
     {
         return await _checkboxes.Nth(0).IsCheckedAsync();
     }
-    public async Task<bool> IsCheckBoxTwoSelected()
+    public async Task<bool> IsCheckBoxTwoSelectedAsync()
     {
         return await _checkboxes.Nth(1).IsCheckedAsync();
     }
